@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="calculatorAppAngular">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Calculator App Using AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.js"></script>
+		<script src="calculatorApp.js"></script>
+		<link rel="stylesheet" href="calculatorStyle.css">
+	</head>
+	<body>
+		<h1 align="center">Calculator App Using AngularJS</h1>
+		<div align="center" ng-controller="CalculatorController">
+		<form name="myForm" class="calculatorbody" novalidate>
+			<input type="text" class="operand" name="firstOperand" ng-model="firstOperand" placeholder="Enter the first operand" required validateoperand /><br style="line-height:3;">
+			<span class="error-msgs" ng-show="myForm.firstOperand.$error.validateoperand">Please enter either an integer or a decimal value.<br style="line-height:3;"></span>
+			
+			<input type="text" class="operator" name="operator" ng-model="operator" placeholder="Enter the operator" required validateoperator /><br>
+			<span class="operatormap" ng-bind="operatorMap"></span><br style="line-height:2;">
+			<span class="error-msgs" ng-show="myForm.operator.$error.validateoperator">Please enter a valid value.<br style="line-height:3;"></span>
+			
+			<!-- If the selected operation is Square Root, second operand is not required. Therefore, hide it. -->
+			<span ng-hide="operator == 'sqrt'">
+			<input type="text" class="operand" name="secondOperand" ng-model="secondOperand" placeholder="Enter the second operand" ng-required="operator != 'sqrt'" validateoperand /><br style="line-height:3;">
+			<span class="error-msgs" ng-show="myForm.secondOperand.$error.validateoperand && operator != '/'">Please enter either an integer or a decimal value.<br style="line-height:3;"></span>
+			<span class="error-msgs" ng-show="myForm.secondOperand.$error.validateoperand && operator == '/'">Please enter either a non zero integer or a decimal value.<br style="line-height:3;"></span>
+			</span>
+			
+			<span ng-show="restartButtonClicked">
+				<button class="button" ng-click="calculateResult()" ng-disabled="myForm.$invalid">Calculate</button><br style="line-height:3;">
+			</span>
+			<span ng-hide="restartButtonClicked">
+				<button class="button" ng-click="restartCalculator()">Restart</button><br style="line-height:3;">
+				<span class="result" ng-bind="result"></span>
+			</span>
+			
+		</form>
+		</div>
+		
+	</body>
+</html>

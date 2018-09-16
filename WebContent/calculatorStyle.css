@@ -1,0 +1,43 @@
+.calculatorbody {
+  background-color:#7FFFD4;
+  width:430px;
+  padding:10px;
+  box-shadow: 5px 5px 5px #888888;
+  border-radius:12px;
+}
+
+.operand {
+	text-align: center;
+	width: 200px;
+    height: 25px;
+    font-style: normal;
+    font-size: 15px;
+}
+
+.operator {
+	text-align: center;
+	width: 100px;
+    height: 25px;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.operatormap {
+	font-style: italic;
+    font-size: 15px;
+    color: #008080;
+}
+
+.button {
+  width:100px;
+  height: 25px;
+  background-color:#80ff80;
+}
+
+.result {
+	font-style: italic;
+    font-size: 20px;
+    color: #800080;
+}	
+
+.error-msgs { color: red;  }
